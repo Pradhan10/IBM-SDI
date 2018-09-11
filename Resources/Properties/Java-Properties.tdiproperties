@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?><MetamergeConfig Cycle="1" UUID="8d89b6d9-235a-4aa3-88f0-b20873628b7a" created="Mon Sep 10 12:06:46 IST 2018" createdBy="GS-1843" modified="Mon Sep 10 12:06:46 IST 2018" modifiedBy="GS-1843" project="Assignment" version="7.1.1">
+    <Container>
+        <Container name="Data"/>
+        <Properties name="Config">
+            <Stores>
+                <PropertyStore name="Assignment">
+                    <Parser/>
+                    <RawConnector>
+                        <InheritFrom>system:/Connectors/ibmdi.Properties</InheritFrom>
+                        <parameter name="collection">@SUBSTITUTE{config.$directory}/Assignment.properties</parameter>
+                        <parameter name="collectionType">Assignment</parameter>
+                    </RawConnector>
+                    <Key>key</Key>
+                    <Value>value</Value>
+                    <ReadOnly>false</ReadOnly>
+                    <InitialLoad>true</InitialLoad>
+                    <CacheTimeout>0</CacheTimeout>
+                </PropertyStore>
+            </Stores>
+        </Properties>
+    </Container>
+</MetamergeConfig>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?><MetamergeConfig Cycle="1" UUID="f47db74c-f0f8-4ecd-8a83-c0bf3c37a580" created="Tue Sep 11 10:37:14 IST 2018" createdBy="GS-1843" main="HttpREST2" modified="Tue Sep 11 10:37:14 IST 2018" modifiedBy="GS-1843" project="Assignment" version="7.1.1">
+    <AssemblyLine name="HttpREST2">
+        <ModTime>1536642434576</ModTime>
+        <Settings/>
+        <Hooks/>
+        <CheckpointConfig/>
+        <SandboxConfig/>
+        <SimulationConfig>
+            <SimulationStates/>
+            <ProxySettings/>
+        </SimulationConfig>
+        <LogConfig/>
+        <ContainerEF name="EntryFeedContainer"/>
+        <ContainerDF name="DataFlowContainer"/>
+        <ThreadOptions/>
+        <Operations/>
+        <InitParams>
+            <Schema name="AssemblyLineInitParams"/>
+        </InitParams>
+    </AssemblyLine>
+</MetamergeConfig>

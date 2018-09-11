@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?><MetamergeConfig Cycle="3" UUID="bb3bc295-defc-4f38-bedf-de7e276b69a4" created="Mon Sep 10 12:07:06 IST 2018" createdBy="GS-1843" main="CSV2XML" modified="Mon Sep 10 17:21:12 IST 2018" modifiedBy="GS-1843" project="Assignment" version="7.1.1">
+    <AssemblyLine name="CSV2XML">
+        <ModTime>1536578902910</ModTime>
+        <Settings/>
+        <Hooks/>
+        <CheckpointConfig/>
+        <SandboxConfig/>
+        <SimulationConfig>
+            <SimulationStates>
+                <Component name="IF" state="Enabled"/>
+            </SimulationStates>
+            <ProxySettings/>
+        </SimulationConfig>
+        <LogConfig/>
+        <ContainerEF name="EntryFeedContainer"/>
+        <ContainerDF name="DataFlowContainer">
+            <ModTime>1536578902910</ModTime>
+            <Branch name="IF">
+                <Conditions/>
+                <MatchAny>false</MatchAny>
+                <Enabled>true</Enabled>
+                <Type>0</Type>
+            </Branch>
+        </ContainerDF>
+        <ThreadOptions/>
+        <Operations/>
+        <InitParams>
+            <Schema name="AssemblyLineInitParams"/>
+        </InitParams>
+    </AssemblyLine>
+</MetamergeConfig>
