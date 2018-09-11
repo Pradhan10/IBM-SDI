@@ -1,14 +1,43 @@
-<?xml version="1.0" encoding="UTF-8"?><MetamergeConfig Cycle="1" UUID="805313a7-0dcc-4e39-873d-a9e9ccc46d80" created="Mon Sep 10 12:06:46 IST 2018" createdBy="GS-1843" modified="Mon Sep 10 12:06:46 IST 2018" modifiedBy="GS-1843" project="Assignment" version="7.1.1">
-    <Container>
-        <Container name="Data"/>
+<?xml version="1.0" encoding="UTF-8"?><MetamergeConfig Cycle="6" UUID="805313a7-0dcc-4e39-873d-a9e9ccc46d80" created="Mon Sep 10 12:06:46 IST 2018" createdBy="GS-1843" main="Assignment" modified="Tue Sep 11 17:22:26 IST 2018" modifiedBy="GS-1843" project="Assignment" version="7.1.1">
+    <Container name="Assignment">
+        <ModTime>1536666746539</ModTime>
+        <Container name="Data">
+            <ModTime>1536666746539</ModTime>
+            <ParameterList name="buffaloDirectoryURL">
+                <parameter name="Property">true</parameter>
+                <parameter name="value">ldap.buffalo.edu</parameter>
+            </ParameterList>
+            <ParameterList name="filePath">
+                <parameter name="Deleted">true</parameter>
+                <parameter name="Property">true</parameter>
+                <parameter name="value">C:\Users\GS-1843\Desktop\Assignment\AL output\Buffalo Directory entries\BuffaloLDAP-output.ldif</parameter>
+            </ParameterList>
+            <ParameterList name="filePath2">
+                <parameter name="Deleted">true</parameter>
+                <parameter name="Property">true</parameter>
+                <parameter name="value">C:\Users\GS-1843\Desktop\Assignment\AL output\Buffalo Directory entries\</parameter>
+            </ParameterList>
+            <ParameterList name="OutPath">
+                <parameter name="Property">true</parameter>
+                <parameter name="value">C:\Users\GS-1843\Desktop\Assignment\AL output\Buffalo Directory entries\BuffaloLDAP-output.ldif</parameter>
+            </ParameterList>
+            <ParameterList name="OutPath2">
+                <parameter name="Property">true</parameter>
+                <parameter name="value">C:\Users\GS-1843\Desktop\Assignment\AL output\Buffalo Directory entries\</parameter>
+            </ParameterList>
+        </Container>
         <Properties name="Config">
+            <ModTime>1536666709445</ModTime>
             <Stores>
                 <PropertyStore name="Assignment">
+                    <ModTime>1536666709445</ModTime>
                     <Parser/>
                     <RawConnector>
                         <InheritFrom>system:/Connectors/ibmdi.Properties</InheritFrom>
+                        <ModTime>1536666709445</ModTime>
                         <parameter name="collection">@SUBSTITUTE{config.$directory}/Assignment.properties</parameter>
                         <parameter name="collectionType">Assignment</parameter>
+                        <parameter name="keyAlias"/>
                     </RawConnector>
                     <Key>key</Key>
                     <Value>value</Value>
