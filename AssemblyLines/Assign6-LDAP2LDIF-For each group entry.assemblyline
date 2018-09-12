@@ -1,6 +1,6 @@
-<?xml version="1.0" encoding="UTF-8"?><MetamergeConfig Cycle="1" UUID="3b1e6491-317f-4983-b54c-a2e17ca99743" created="Tue Sep 11 17:34:18 IST 2018" createdBy="GS-1843" main="Assign5-LDAP2LDIF-For each entry" modified="Tue Sep 11 17:34:18 IST 2018" modifiedBy="GS-1843" project="Assignment" version="7.1.1">
-    <AssemblyLine name="Assign5-LDAP2LDIF-For each entry">
-        <ModTime>1536667086991</ModTime>
+<?xml version="1.0" encoding="UTF-8"?><MetamergeConfig Cycle="64" UUID="faece1ba-2819-4fb8-a7cf-9a93aa8f2f33" created="Tue Sep 11 12:26:16 IST 2018" createdBy="GS-1843" main="Assign6-LDAP2LDIF-For each group entry" modified="Wed Sep 12 12:09:30 IST 2018" modifiedBy="GS-1843" project="Assignment" version="7.1.1">
+    <AssemblyLine name="Assign6-LDAP2LDIF-For each group entry">
+        <ModTime>1536734356484</ModTime>
         <Settings>
             <parameter name="ALPoolSettingsDialog">showALPoolSettings</parameter>
             <parameter name="automapattributes">false</parameter>
@@ -13,28 +13,33 @@
         <SandboxConfig/>
         <SimulationConfig>
             <SimulationStates>
-                <Component name="Each entry in LDAP" state="Enabled"/>
-                <Component name="DumpWorkEntry" state="Enabled"/>
+                <Component name="Each group in LDAP" state="Enabled"/>
+                <Component name="List members of Group" state="Enabled"/>
                 <Component name="FileConnector" state="Enabled"/>
+                <Component name="DumpWorkEntry" state="Enabled"/>
             </SimulationStates>
             <ProxySettings/>
         </SimulationConfig>
         <LogConfig/>
-        <ContainerEF name="EntryFeedContainer"/>
+        <ContainerEF name="EntryFeedContainer">
+            <ModTime>1536650957431</ModTime>
+        </ContainerEF>
         <ContainerDF name="DataFlowContainer">
-            <Loop name="Each entry in LDAP">
-                <ModTime>1536667086991</ModTime>
+            <ModTime>1536734356484</ModTime>
+            <Loop name="Each group in LDAP">
+                <ModTime>1536734356484</ModTime>
                 <LoopType>1</LoopType>
-                <Connector name="Each entry in LDAP">
+                <Connector name="Each group in LDAP">
                     <InheritFrom>system:/Connectors/ibmdi.LDAP</InheritFrom>
-                    <ModTime>1536656092138</ModTime>
+                    <ModTime>1536733140914</ModTime>
                     <ConnectorMode>Iterator</ConnectorMode>
                     <ConnectorState>Enabled</ConnectorState>
                     <Configuration>
                         <UserComment>Public dir at buffalo NY</UserComment>
                         <InheritFrom>[parent]</InheritFrom>
-                        <parameter name="ldapSearchBase">o=University at Buffalo,c=US</parameter>
-                        <parameter name="ldapUrl">ldap://ldap.buffalo.edu:389</parameter>
+                        <ModTime>1536732547762</ModTime>
+                        <parameter name="ldapSearchBase">dc=example,dc=com</parameter>
+                        <parameter name="ldapUrl">ldap://ldap.forumsys.com :389</parameter>
                         <parameter name="ldapUseSSL">false</parameter>
                     </Configuration>
                     <Parser>
@@ -42,9 +47,11 @@
                     </Parser>
                     <AttributeMap name="Input">
                         <InheritFrom>[parent]</InheritFrom>
+                        <ModTime>1536732610817</ModTime>
                         <AttributeMapItem>
                             <Name>$dn</Name>
-                            <Type>simple</Type>
+                            <Type>advanced</Type>
+                            <Script>conn.ou</Script>
                             <Simple>$dn</Simple>
                         </AttributeMapItem>
                         <AttributeMapItem>
@@ -54,6 +61,7 @@
                         </AttributeMapItem>
                     </AttributeMap>
                     <AttributeMap name="Output">
+                        <ModTime>1536649811811</ModTime>
                         <AttributeMapItem>
                             <Name>*</Name>
                             <Type>simple</Type>
@@ -61,6 +69,7 @@
                         </AttributeMapItem>
                     </AttributeMap>
                     <DeltaSettings>
+                        <ModTime>1536649738228</ModTime>
                         <UniqueAttribute/>
                         <WhenToCommit>After every database operation</WhenToCommit>
                         <RowLocking>SERIALIZABLE</RowLocking>
@@ -68,6 +77,7 @@
                     </DeltaSettings>
                     <Schema name="Input">
                         <InheritFrom>[parent]</InheritFrom>
+                        <ModTime>1536732600323</ModTime>
                         <SchemaItem>
                             <Name>$dn</Name>
                             <Syntax>java.lang.String</Syntax>
@@ -88,7 +98,7 @@
                         <SchemaItem>
                             <Name>cn</Name>
                             <Syntax>java.lang.String</Syntax>
-                            <NativeSyntax>MUST/Directory String/Standard Attribute</NativeSyntax>
+                            <NativeSyntax>MUST/String/RFC4519: common name(s) for which the entity is known by</NativeSyntax>
                         </SchemaItem>
                         <SchemaItem>
                             <Name>degrees</Name>
@@ -102,7 +112,12 @@
                         </SchemaItem>
                         <SchemaItem>
                             <Name>description</Name>
-                            <NativeSyntax>MAY/Directory String/Standard Attribute</NativeSyntax>
+                            <Syntax>java.lang.String</Syntax>
+                            <NativeSyntax>MAY/Directory String{1024}/RFC4519: descriptive information</NativeSyntax>
+                        </SchemaItem>
+                        <SchemaItem>
+                            <Name>destinationIndicator</Name>
+                            <NativeSyntax>MAY/Printable String{128}/RFC2256: destination indicator</NativeSyntax>
                         </SchemaItem>
                         <SchemaItem>
                             <Name>email</Name>
@@ -144,7 +159,7 @@
                         </SchemaItem>
                         <SchemaItem>
                             <Name>l</Name>
-                            <NativeSyntax>MAY/Directory String/Standard Attribute</NativeSyntax>
+                            <NativeSyntax>MAY/String/RFC2256: locality which this object resides in</NativeSyntax>
                         </SchemaItem>
                         <SchemaItem>
                             <Name>labeleduri</Name>
@@ -195,7 +210,7 @@
                         </SchemaItem>
                         <SchemaItem>
                             <Name>ou</Name>
-                            <NativeSyntax>MAY/Directory String/Standard Attribute</NativeSyntax>
+                            <NativeSyntax>MAY/String/RFC2256: organizational unit this object belongs to</NativeSyntax>
                         </SchemaItem>
                         <SchemaItem>
                             <Name>pager</Name>
@@ -260,6 +275,10 @@
                             <NativeSyntax>MAY/Directory String/User Defined Attribute</NativeSyntax>
                         </SchemaItem>
                         <SchemaItem>
+                            <Name>roleOccupant</Name>
+                            <NativeSyntax>MAY/String/RFC2256: occupant of role</NativeSyntax>
+                        </SchemaItem>
+                        <SchemaItem>
                             <Name>roomnumber</Name>
                             <NativeSyntax>MAY/Directory String/Standard Attribute</NativeSyntax>
                         </SchemaItem>
@@ -283,16 +302,24 @@
                         </SchemaItem>
                         <SchemaItem>
                             <Name>st</Name>
-                            <NativeSyntax>MAY/Directory String/Standard Attribute</NativeSyntax>
+                            <NativeSyntax>MAY/String/RFC2256: state or province which this object resides in</NativeSyntax>
                         </SchemaItem>
                         <SchemaItem>
                             <Name>street</Name>
-                            <NativeSyntax>MAY/Directory String/Standard Attribute</NativeSyntax>
+                            <NativeSyntax>MAY/Directory String{128}/RFC2256: street address of this object</NativeSyntax>
                         </SchemaItem>
                         <SchemaItem>
                             <Name>telephonenumber</Name>
                             <Syntax>java.lang.String</Syntax>
                             <NativeSyntax>MAY/Telephone Number/Standard Attribute</NativeSyntax>
+                        </SchemaItem>
+                        <SchemaItem>
+                            <Name>teletexTerminalIdentifier</Name>
+                            <NativeSyntax>MAY/Teletex Terminal Identifier/RFC2256: Teletex Terminal Identifier</NativeSyntax>
+                        </SchemaItem>
+                        <SchemaItem>
+                            <Name>telexNumber</Name>
+                            <NativeSyntax>MAY/Telex Number/RFC2256: Telex Number</NativeSyntax>
                         </SchemaItem>
                         <SchemaItem>
                             <Name>title</Name>
@@ -333,10 +360,15 @@
                             <Name>vacationmessage</Name>
                             <NativeSyntax>MAY/Directory String/User Defined Attribute</NativeSyntax>
                         </SchemaItem>
+                        <SchemaItem>
+                            <Name>x121Address</Name>
+                            <NativeSyntax>MAY/Numeric String{15}/RFC2256: X.121 Address</NativeSyntax>
+                        </SchemaItem>
                     </Schema>
                     <Schema name="Output">
                         <UserComment>{extsyntax=TEXTAREA, name=userComment}</UserComment>
                         <InheritFrom>[no inheritance]</InheritFrom>
+                        <ModTime>1536649737866</ModTime>
                         <SchemaItem>
                             <Name>automapADPassword</Name>
                             <NativeSyntax>boolean</NativeSyntax>
@@ -434,6 +466,7 @@
                     <LinkCriteria/>
                     <Hooks>
                         <InheritFrom>[parent]</InheritFrom>
+                        <ModTime>1536649977707</ModTime>
                         <Hook name="default_fail">
                             <InheritFrom>[no inheritance]</InheritFrom>
                             <Name>default_fail</Name>
@@ -454,112 +487,140 @@ system.exitBranch()]]></Script>
                     </PoolDefinition>
                     <PoolInstance/>
                 </Connector>
-                <Branch name="Each entry in LDAP">
-                    <ModTime>1536667086991</ModTime>
-                    <Script name="DumpWorkEntry">
-                        <ModTime>1536649617561</ModTime>
-                        <parameter name="script"><![CDATA[// Dump the work entry
-task.dumpEntry(work);
-]]></parameter>
-                    </Script>
-                    <Connector name="FileConnector">
-                        <InheritFrom>system:/Connectors/ibmdi.FileSystem</InheritFrom>
-                        <ModTime>1536667086991</ModTime>
-                        <ConnectorMode>AddOnly</ConnectorMode>
-                        <ConnectorState>Enabled</ConnectorState>
-                        <Configuration>
-                            <UserComment>Output here</UserComment>
-                            <InheritFrom>[parent]</InheritFrom>
-                            <parameter name="filePath">@SUBSTITUTE{property.Assignment:OutPath}</parameter>
-                            <parameter name="includeFiles"/>
-                        </Configuration>
-                        <Parser>
-                            <InheritFrom>system:/Parsers/ibmdi.LDIF</InheritFrom>
-                        </Parser>
-                        <AttributeMap name="Input">
-                            <InheritFrom>[parent]</InheritFrom>
-                            <AttributeMapItem>
-                                <Name>*</Name>
-                                <Type>simple</Type>
-                                <Simple>*</Simple>
-                            </AttributeMapItem>
-                        </AttributeMap>
-                        <AttributeMap name="Output">
-                            <InheritFrom>[parent]</InheritFrom>
-                            <AttributeMapItem>
-                                <Name>*</Name>
-                                <Type>simple</Type>
-                                <Simple>*</Simple>
-                            </AttributeMapItem>
-                        </AttributeMap>
-                        <DeltaSettings>
-                            <UniqueAttribute/>
-                            <WhenToCommit>After every database operation</WhenToCommit>
-                            <RowLocking>SERIALIZABLE</RowLocking>
-                            <ChangeDetectionMode>DETECT_ALL</ChangeDetectionMode>
-                        </DeltaSettings>
-                        <Schema name="Input">
-                            <InheritFrom>[parent]</InheritFrom>
-                        </Schema>
-                        <Schema name="Output">
-                            <InheritFrom>[parent]</InheritFrom>
-                        </Schema>
-                        <LinkCriteria>
-                            <InheritFrom>[parent]</InheritFrom>
-                        </LinkCriteria>
-                        <Hooks>
-                            <InheritFrom>[parent]</InheritFrom>
-                            <Hook name="addonly_ok">
-                                <InheritFrom>[no inheritance]</InheritFrom>
-                                <Name>addonly_ok</Name>
-                                <Script/>
-                                <Enabled>false</Enabled>
-                            </Hook>
-                            <Hook name="after_add">
-                                <InheritFrom>[no inheritance]</InheritFrom>
-                                <Name>after_add</Name>
-                                <Script><![CDATA[var partialPath = system.getTDIProperty("filePath2")
-var fullPath = partialPath + "LDIF-DUMP-" +  work.uid + ".ldif"
+                <Branch name="Each group in LDAP">
+                    <ModTime>1536734356484</ModTime>
+                    <Branch name="List members of Group">
+                        <ModTime>1536734356484</ModTime>
+                        <Connector name="FileConnector">
+                            <InheritFrom>system:/Connectors/ibmdi.FileSystem</InheritFrom>
+                            <ModTime>1536734356484</ModTime>
+                            <ConnectorMode>AddOnly</ConnectorMode>
+                            <ConnectorState>Enabled</ConnectorState>
+                            <Configuration>
+                                <UserComment>Output here</UserComment>
+                                <InheritFrom>[parent]</InheritFrom>
+                                <ModTime>1536734287759</ModTime>
+                                <parameter name="filePath">C:\Users\GS-1843\Desktop\Assignment\AL output\Buffalo Directory entries\entries\</parameter>
+                                <parameter name="includeFiles"/>
+                            </Configuration>
+                            <Parser>
+                                <InheritFrom>system:/Parsers/ibmdi.LDIF</InheritFrom>
+                                <ModTime>1536732392571</ModTime>
+                            </Parser>
+                            <AttributeMap name="Input">
+                                <InheritFrom>[parent]</InheritFrom>
+                                <ModTime>1536650957431</ModTime>
+                                <AttributeMapItem>
+                                    <Name>*</Name>
+                                    <Type>simple</Type>
+                                    <Simple>*</Simple>
+                                </AttributeMapItem>
+                            </AttributeMap>
+                            <AttributeMap name="Output">
+                                <InheritFrom>[parent]</InheritFrom>
+                                <ModTime>1536651139975</ModTime>
+                                <AttributeMapItem>
+                                    <Name>*</Name>
+                                    <Type>simple</Type>
+                                    <Simple>*</Simple>
+                                </AttributeMapItem>
+                            </AttributeMap>
+                            <DeltaSettings>
+                                <ModTime>1536650906512</ModTime>
+                                <UniqueAttribute/>
+                                <WhenToCommit>After every database operation</WhenToCommit>
+                                <RowLocking>SERIALIZABLE</RowLocking>
+                                <ChangeDetectionMode>DETECT_ALL</ChangeDetectionMode>
+                            </DeltaSettings>
+                            <Schema name="Input">
+                                <InheritFrom>[parent]</InheritFrom>
+                                <ModTime>1536650631693</ModTime>
+                            </Schema>
+                            <Schema name="Output">
+                                <InheritFrom>[parent]</InheritFrom>
+                                <ModTime>1536650631693</ModTime>
+                            </Schema>
+                            <LinkCriteria>
+                                <InheritFrom>[parent]</InheritFrom>
+                                <ModTime>1536650631693</ModTime>
+                            </LinkCriteria>
+                            <Hooks>
+                                <InheritFrom>[parent]</InheritFrom>
+                                <ModTime>1536734356484</ModTime>
+                                <Hook name="addonly_ok">
+                                    <InheritFrom>[no inheritance]</InheritFrom>
+                                    <Name>addonly_ok</Name>
+                                    <Script/>
+                                    <Enabled>false</Enabled>
+                                </Hook>
+                                <Hook name="after_getnext">
+                                    <InheritFrom>[no inheritance]</InheritFrom>
+                                    <Name>after_getnext</Name>
+                                    <Script/>
+                                    <Enabled>false</Enabled>
+                                </Hook>
+                                <Hook name="before_add">
+                                    <Name>before_add</Name>
+                                    <Enabled>false</Enabled>
+                                </Hook>
+                                <Hook name="before_initialize">
+                                    <InheritFrom>[no inheritance]</InheritFrom>
+                                    <ModTime>1536734356484</ModTime>
+                                    <Name>before_initialize</Name>
+                                    <Script><![CDATA[var partialPath = system.getTDIProperty("OutPathGroup")
+var fullPath = partialPath + "LDIF-DUMP-GRP-" + work.getAttribute("ou") + ".ldif"
 task.logmsg("*****"+fullPath)
 thisConnector.setConnectorParam("filePath",fullPath)]]></Script>
-                                <Enabled>true</Enabled>
-                            </Hook>
-                            <Hook name="after_getnext">
-                                <InheritFrom>[no inheritance]</InheritFrom>
-                                <Name>after_getnext</Name>
-                                <Script/>
-                                <Enabled>false</Enabled>
-                            </Hook>
-                            <Hook name="before_execute">
-                                <Name>before_execute</Name>
-                                <Enabled>false</Enabled>
-                            </Hook>
-                            <Hook name="get_ok">
-                                <InheritFrom>[no inheritance]</InheritFrom>
-                                <Name>get_ok</Name>
-                                <Script/>
-                                <Enabled>false</Enabled>
-                            </Hook>
-                            <Hook name="override_getnext">
-                                <InheritFrom>[no inheritance]</InheritFrom>
-                                <Name>override_getnext</Name>
-                                <Script/>
-                                <Enabled>true</Enabled>
-                            </Hook>
-                        </Hooks>
-                        <CheckpointConfig/>
-                        <SandboxConfig/>
-                        <Reconnect>
-                            <InheritFrom>[parent]</InheritFrom>
-                            <ReconnectRules/>
-                        </Reconnect>
-                        <Operations/>
-                        <PoolDefinition>
-                            <InheritFrom>[parent]</InheritFrom>
-                        </PoolDefinition>
-                        <PoolInstance/>
-                        <InitializeOption>3</InitializeOption>
-                    </Connector>
+                                    <Enabled>true</Enabled>
+                                </Hook>
+                                <Hook name="default_ok">
+                                    <InheritFrom>[no inheritance]</InheritFrom>
+                                    <ModTime>1536734333259</ModTime>
+                                    <Name>default_ok</Name>
+                                    <Script/>
+                                    <Enabled>false</Enabled>
+                                </Hook>
+                                <Hook name="get_ok">
+                                    <InheritFrom>[no inheritance]</InheritFrom>
+                                    <Name>get_ok</Name>
+                                    <Script/>
+                                    <Enabled>false</Enabled>
+                                </Hook>
+                            </Hooks>
+                            <CheckpointConfig/>
+                            <SandboxConfig/>
+                            <Reconnect>
+                                <InheritFrom>[parent]</InheritFrom>
+                                <ReconnectRules/>
+                            </Reconnect>
+                            <Operations/>
+                            <PoolDefinition>
+                                <InheritFrom>[parent]</InheritFrom>
+                            </PoolDefinition>
+                            <PoolInstance/>
+                            <InitializeOption>3</InitializeOption>
+                            <LookupLimit>10</LookupLimit>
+                        </Connector>
+                        <Script name="DumpWorkEntry">
+                            <ModTime>1536649617561</ModTime>
+                            <parameter name="script"><![CDATA[// Dump the work entry
+task.dumpEntry(work);
+]]></parameter>
+                        </Script>
+                        <Conditions>
+                            <ModTime>1536733061148</ModTime>
+                            <BranchCondition>
+                                <LeftHand>ou</LeftHand>
+                                <Operator>exists</Operator>
+                                <RightHand/>
+                                <CaseSensitive>false</CaseSensitive>
+                                <MatchAny>true</MatchAny>
+                            </BranchCondition>
+                        </Conditions>
+                        <MatchAny>false</MatchAny>
+                        <Enabled>true</Enabled>
+                        <Type>0</Type>
+                    </Branch>
                     <Conditions/>
                     <MatchAny>false</MatchAny>
                     <Enabled>true</Enabled>

@@ -1,6 +1,6 @@
-<?xml version="1.0" encoding="UTF-8"?><MetamergeConfig Cycle="39" UUID="faece1ba-2819-4fb8-a7cf-9a93aa8f2f33" created="Tue Sep 11 12:26:16 IST 2018" createdBy="GS-1843" main="Assign5-LDAP2LDIF-For each entry" modified="Tue Sep 11 17:29:14 IST 2018" modifiedBy="GS-1843" project="Assignment" version="7.1.1">
+<?xml version="1.0" encoding="UTF-8"?><MetamergeConfig Cycle="45" UUID="faece1ba-2819-4fb8-a7cf-9a93aa8f2f33" created="Tue Sep 11 12:26:16 IST 2018" createdBy="GS-1843" main="Assign5-LDAP2LDIF-For each entry" modified="Tue Sep 11 17:58:55 IST 2018" modifiedBy="GS-1843" project="Assignment" version="7.1.1">
     <AssemblyLine name="Assign5-LDAP2LDIF-For each entry">
-        <ModTime>1536667086991</ModTime>
+        <ModTime>1536668645714</ModTime>
         <Settings>
             <parameter name="ALPoolSettingsDialog">showALPoolSettings</parameter>
             <parameter name="automapattributes">false</parameter>
@@ -24,9 +24,9 @@
             <ModTime>1536650957431</ModTime>
         </ContainerEF>
         <ContainerDF name="DataFlowContainer">
-            <ModTime>1536667086991</ModTime>
+            <ModTime>1536668645714</ModTime>
             <Loop name="Each entry in LDAP">
-                <ModTime>1536667086991</ModTime>
+                <ModTime>1536668645714</ModTime>
                 <LoopType>1</LoopType>
                 <Connector name="Each entry in LDAP">
                     <InheritFrom>system:/Connectors/ibmdi.LDAP</InheritFrom>
@@ -465,7 +465,7 @@ system.exitBranch()]]></Script>
                     <PoolInstance/>
                 </Connector>
                 <Branch name="Each entry in LDAP">
-                    <ModTime>1536667086991</ModTime>
+                    <ModTime>1536668645714</ModTime>
                     <Script name="DumpWorkEntry">
                         <ModTime>1536649617561</ModTime>
                         <parameter name="script"><![CDATA[// Dump the work entry
@@ -474,7 +474,7 @@ task.dumpEntry(work);
                     </Script>
                     <Connector name="FileConnector">
                         <InheritFrom>system:/Connectors/ibmdi.FileSystem</InheritFrom>
-                        <ModTime>1536667086991</ModTime>
+                        <ModTime>1536668645714</ModTime>
                         <ConnectorMode>AddOnly</ConnectorMode>
                         <ConnectorState>Enabled</ConnectorState>
                         <Configuration>
@@ -527,18 +527,11 @@ task.dumpEntry(work);
                         </LinkCriteria>
                         <Hooks>
                             <InheritFrom>[parent]</InheritFrom>
-                            <ModTime>1536666935066</ModTime>
+                            <ModTime>1536668583698</ModTime>
                             <Hook name="addonly_ok">
                                 <InheritFrom>[no inheritance]</InheritFrom>
-                                <ModTime>1536657629315</ModTime>
+                                <ModTime>1536668463173</ModTime>
                                 <Name>addonly_ok</Name>
-                                <Script/>
-                                <Enabled>false</Enabled>
-                            </Hook>
-                            <Hook name="after_add">
-                                <InheritFrom>[no inheritance]</InheritFrom>
-                                <ModTime>1536666935066</ModTime>
-                                <Name>after_add</Name>
                                 <Script><![CDATA[var partialPath = system.getTDIProperty("filePath2")
 var fullPath = partialPath + "LDIF-DUMP-" +  work.uid + ".ldif"
 task.logmsg("*****"+fullPath)
@@ -547,28 +540,28 @@ thisConnector.setConnectorParam("filePath",fullPath)]]></Script>
                             </Hook>
                             <Hook name="after_getnext">
                                 <InheritFrom>[no inheritance]</InheritFrom>
-                                <ModTime>1536665815437</ModTime>
                                 <Name>after_getnext</Name>
                                 <Script/>
                                 <Enabled>false</Enabled>
                             </Hook>
                             <Hook name="before_execute">
-                                <ModTime>1536664584760</ModTime>
                                 <Name>before_execute</Name>
                                 <Enabled>false</Enabled>
                             </Hook>
                             <Hook name="get_ok">
                                 <InheritFrom>[no inheritance]</InheritFrom>
-                                <ModTime>1536665858642</ModTime>
                                 <Name>get_ok</Name>
                                 <Script/>
                                 <Enabled>false</Enabled>
                             </Hook>
                             <Hook name="override_getnext">
                                 <InheritFrom>[no inheritance]</InheritFrom>
-                                <ModTime>1536666930753</ModTime>
+                                <ModTime>1536668355676</ModTime>
                                 <Name>override_getnext</Name>
-                                <Script/>
+                                <Script><![CDATA[var partialPath = system.getTDIProperty("filePath2")
+var fullPath = partialPath + "LDIF-DUMP-" +  work.uid + ".ldif"
+task.logmsg("*****"+fullPath)
+thisConnector.setConnectorParam("filePath",fullPath)]]></Script>
                                 <Enabled>true</Enabled>
                             </Hook>
                         </Hooks>
@@ -583,7 +576,7 @@ thisConnector.setConnectorParam("filePath",fullPath)]]></Script>
                             <InheritFrom>[parent]</InheritFrom>
                         </PoolDefinition>
                         <PoolInstance/>
-                        <InitializeOption>3</InitializeOption>
+                        <InitializeOption>2</InitializeOption>
                     </Connector>
                     <Conditions/>
                     <MatchAny>false</MatchAny>

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><MetamergeConfig Cycle="9" UUID="805313a7-0dcc-4e39-873d-a9e9ccc46d80" created="Mon Sep 10 12:06:46 IST 2018" createdBy="GS-1843" main="Assignment" modified="Wed Sep 12 11:54:18 IST 2018" modifiedBy="GS-1843" project="Assignment" version="7.1.1">
+<?xml version="1.0" encoding="UTF-8"?><MetamergeConfig Cycle="1" UUID="d98bc6ae-8f7c-4595-8f84-db65b4140e8f" created="Wed Sep 12 12:10:56 IST 2018" createdBy="GS-1843" main="Assignment" modified="Wed Sep 12 12:10:56 IST 2018" modifiedBy="GS-1843" project="Assignment" version="7.1.1">
     <Container name="Assignment">
         <ModTime>1536733456586</ModTime>
         <Container name="Data">
@@ -36,7 +36,6 @@
                     <Parser/>
                     <RawConnector>
                         <InheritFrom>system:/Connectors/ibmdi.Properties</InheritFrom>
-                        <ModTime>1536666709445</ModTime>
                         <parameter name="collection">@SUBSTITUTE{config.$directory}/Assignment.properties</parameter>
                         <parameter name="collectionType">Assignment</parameter>
                         <parameter name="keyAlias"/>
