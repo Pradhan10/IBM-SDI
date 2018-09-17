@@ -1,0 +1,353 @@
+<?xml version="1.0" encoding="UTF-8"?><MetamergeConfig Cycle="7" UUID="8d86273b-ae0a-46a4-b1ed-176200815604" created="Mon Sep 17 18:47:44 IST 2018" createdBy="GS-1843" main="Assign7-userAndGroup2LDAP" modified="Mon Sep 17 19:08:18 IST 2018" modifiedBy="GS-1843" project="Assignment" version="7.1.1">
+    <AssemblyLine name="Assign7-userAndGroup2LDAP">
+        <ModTime>1537191478791</ModTime>
+        <Settings/>
+        <Hooks/>
+        <CheckpointConfig/>
+        <SandboxConfig/>
+        <SimulationConfig>
+            <SimulationStates>
+                <Component name="FileConnector" state="Simulated"/>
+                <Component name="LDAPConnector" state="Simulated"/>
+                <Component name="FileManagementConnector" state="Enabled"/>
+            </SimulationStates>
+            <ProxySettings/>
+        </SimulationConfig>
+        <LogConfig/>
+        <ContainerEF name="EntryFeedContainer">
+            <ModTime>1537191207816</ModTime>
+            <Connector name="FileManagementConnector">
+                <InheritFrom>system:/Connectors/ibmdi.FileManagementConnector</InheritFrom>
+                <ModTime>1537191207816</ModTime>
+                <ConnectorMode>Iterator</ConnectorMode>
+                <ConnectorState>Enabled</ConnectorState>
+                <Configuration>
+                    <InheritFrom>[parent]</InheritFrom>
+                    <ModTime>1537190327090</ModTime>
+                    <parameter name="startDirectory">R:\PROJECTS\IBM SDI OUTPUTS\Assign5-LDAP2LDIF-For each entry</parameter>
+                </Configuration>
+                <Parser>
+                    <InheritFrom>[parent]</InheritFrom>
+                    <ModTime>1537190288124</ModTime>
+                </Parser>
+                <AttributeMap name="Input">
+                    <InheritFrom>[parent]</InheritFrom>
+                    <ModTime>1537191136314</ModTime>
+                    <AttributeMapItem>
+                        <Name>*</Name>
+                        <Type>simple</Type>
+                        <Simple>*</Simple>
+                    </AttributeMapItem>
+                    <AttributeMapItem>
+                        <Name>file</Name>
+                        <Type>simple</Type>
+                        <Simple>file</Simple>
+                    </AttributeMapItem>
+                    <AttributeMapItem>
+                        <Name>fullPath</Name>
+                        <Type>simple</Type>
+                        <Simple>fullPath</Simple>
+                    </AttributeMapItem>
+                    <AttributeMapItem>
+                        <Name>isDirectory</Name>
+                        <Type>simple</Type>
+                        <Simple>isDirectory</Simple>
+                    </AttributeMapItem>
+                    <AttributeMapItem>
+                        <Name>isHidden</Name>
+                        <Type>simple</Type>
+                        <Simple>isHidden</Simple>
+                    </AttributeMapItem>
+                    <AttributeMapItem>
+                        <Name>isReadOnly</Name>
+                        <Type>simple</Type>
+                        <Simple>isReadOnly</Simple>
+                    </AttributeMapItem>
+                    <AttributeMapItem>
+                        <Name>isSymbolicLink</Name>
+                        <Type>simple</Type>
+                        <Simple>isSymbolicLink</Simple>
+                    </AttributeMapItem>
+                    <AttributeMapItem>
+                        <Name>lastModified</Name>
+                        <Type>simple</Type>
+                        <Simple>lastModified</Simple>
+                    </AttributeMapItem>
+                    <AttributeMapItem>
+                        <Name>length</Name>
+                        <Type>simple</Type>
+                        <Simple>length</Simple>
+                    </AttributeMapItem>
+                    <AttributeMapItem>
+                        <Name>name</Name>
+                        <Type>simple</Type>
+                        <Simple>name</Simple>
+                    </AttributeMapItem>
+                    <AttributeMapItem>
+                        <Name>parent</Name>
+                        <Type>simple</Type>
+                        <Simple>parent</Simple>
+                    </AttributeMapItem>
+                </AttributeMap>
+                <AttributeMap name="Output">
+                    <InheritFrom>[parent]</InheritFrom>
+                    <ModTime>1537190288124</ModTime>
+                </AttributeMap>
+                <DeltaSettings>
+                    <ModTime>1537190330819</ModTime>
+                    <WhenToCommit>After every database operation</WhenToCommit>
+                    <RowLocking>SERIALIZABLE</RowLocking>
+                    <ChangeDetectionMode>DETECT_ALL</ChangeDetectionMode>
+                </DeltaSettings>
+                <Schema name="Input">
+                    <InheritFrom>[parent]</InheritFrom>
+                    <ModTime>1537190494179</ModTime>
+                    <SchemaItem>
+                        <Name>file</Name>
+                        <Syntax>java.io.File</Syntax>
+                    </SchemaItem>
+                    <SchemaItem>
+                        <Name>fullPath</Name>
+                        <Syntax>java.lang.String</Syntax>
+                    </SchemaItem>
+                    <SchemaItem>
+                        <Name>isDirectory</Name>
+                        <Syntax>java.lang.Boolean</Syntax>
+                    </SchemaItem>
+                    <SchemaItem>
+                        <Name>isHidden</Name>
+                        <Syntax>java.lang.Boolean</Syntax>
+                    </SchemaItem>
+                    <SchemaItem>
+                        <Name>isReadOnly</Name>
+                        <Syntax>java.lang.Boolean</Syntax>
+                    </SchemaItem>
+                    <SchemaItem>
+                        <Name>isSymbolicLink</Name>
+                        <Syntax>java.lang.Boolean</Syntax>
+                    </SchemaItem>
+                    <SchemaItem>
+                        <Name>lastModified</Name>
+                        <Syntax>java.util.Date</Syntax>
+                    </SchemaItem>
+                    <SchemaItem>
+                        <Name>length</Name>
+                        <Syntax>java.lang.Long</Syntax>
+                    </SchemaItem>
+                    <SchemaItem>
+                        <Name>name</Name>
+                        <Syntax>java.lang.String</Syntax>
+                    </SchemaItem>
+                    <SchemaItem>
+                        <Name>parent</Name>
+                        <Syntax>java.lang.String</Syntax>
+                    </SchemaItem>
+                </Schema>
+                <Schema name="Output">
+                    <InheritFrom>[parent]</InheritFrom>
+                    <ModTime>1537190494179</ModTime>
+                    <SchemaItem>
+                        <Name>file</Name>
+                        <Syntax>java.io.File</Syntax>
+                    </SchemaItem>
+                    <SchemaItem>
+                        <Name>fullPath</Name>
+                        <Syntax>java.lang.String</Syntax>
+                    </SchemaItem>
+                    <SchemaItem>
+                        <Name>isDirectory</Name>
+                        <Syntax>java.lang.Boolean</Syntax>
+                    </SchemaItem>
+                    <SchemaItem>
+                        <Name>isHidden</Name>
+                        <Syntax>java.lang.Boolean</Syntax>
+                    </SchemaItem>
+                    <SchemaItem>
+                        <Name>isReadOnly</Name>
+                        <Syntax>java.lang.Boolean</Syntax>
+                    </SchemaItem>
+                    <SchemaItem>
+                        <Name>isSymbolicLink</Name>
+                        <Syntax>java.lang.Boolean</Syntax>
+                    </SchemaItem>
+                    <SchemaItem>
+                        <Name>lastModified</Name>
+                        <Syntax>java.util.Date</Syntax>
+                    </SchemaItem>
+                    <SchemaItem>
+                        <Name>length</Name>
+                        <Syntax>java.lang.Long</Syntax>
+                    </SchemaItem>
+                    <SchemaItem>
+                        <Name>name</Name>
+                        <Syntax>java.lang.String</Syntax>
+                    </SchemaItem>
+                    <SchemaItem>
+                        <Name>parent</Name>
+                        <Syntax>java.lang.String</Syntax>
+                    </SchemaItem>
+                </Schema>
+                <LinkCriteria>
+                    <InheritFrom>[parent]</InheritFrom>
+                    <ModTime>1537190288124</ModTime>
+                </LinkCriteria>
+                <Hooks>
+                    <InheritFrom>[parent]</InheritFrom>
+                    <ModTime>1537191207816</ModTime>
+                    <Hook name="default_ok">
+                        <InheritFrom>[no inheritance]</InheritFrom>
+                        <ModTime>1537191207816</ModTime>
+                        <Name>default_ok</Name>
+                        <Script>var localPATH = conn.fullPath;</Script>
+                        <Enabled>true</Enabled>
+                    </Hook>
+                </Hooks>
+                <CheckpointConfig/>
+                <SandboxConfig/>
+                <Reconnect>
+                    <InheritFrom>[parent]</InheritFrom>
+                    <ReconnectRules/>
+                </Reconnect>
+                <Operations/>
+                <PoolDefinition>
+                    <InheritFrom>[parent]</InheritFrom>
+                </PoolDefinition>
+                <PoolInstance/>
+            </Connector>
+        </ContainerEF>
+        <ContainerDF name="DataFlowContainer">
+            <ModTime>1537191478791</ModTime>
+            <Connector name="FileConnector">
+                <InheritFrom>system:/Connectors/ibmdi.FileSystem</InheritFrom>
+                <ModTime>1537191478791</ModTime>
+                <ConnectorMode>AddOnly</ConnectorMode>
+                <ConnectorState>Enabled</ConnectorState>
+                <Configuration>
+                    <InheritFrom>[parent]</InheritFrom>
+                    <ModTime>1537191478791</ModTime>
+                    <parameter name="filePath"><![CDATA[@SUBSTITUTE{javascript // e.g. return "string value" 
+return work.fullPath.toString();}]]></parameter>
+                </Configuration>
+                <Parser>
+                    <InheritFrom>[parent]</InheritFrom>
+                    <ModTime>1537190507577</ModTime>
+                </Parser>
+                <AttributeMap name="Input">
+                    <InheritFrom>[parent]</InheritFrom>
+                    <ModTime>1537190507577</ModTime>
+                </AttributeMap>
+                <AttributeMap name="Output">
+                    <InheritFrom>[parent]</InheritFrom>
+                    <ModTime>1537191386014</ModTime>
+                    <AttributeMapItem>
+                        <Name>*</Name>
+                        <Type>simple</Type>
+                        <Simple>*</Simple>
+                    </AttributeMapItem>
+                    <AttributeMapItem>
+                        <Name>fullPath</Name>
+                        <Type>simple</Type>
+                        <Simple>fullPath</Simple>
+                    </AttributeMapItem>
+                </AttributeMap>
+                <DeltaSettings/>
+                <Schema name="Input">
+                    <InheritFrom>[parent]</InheritFrom>
+                    <ModTime>1537190507577</ModTime>
+                </Schema>
+                <Schema name="Output">
+                    <InheritFrom>[parent]</InheritFrom>
+                    <ModTime>1537190507577</ModTime>
+                </Schema>
+                <LinkCriteria>
+                    <InheritFrom>[parent]</InheritFrom>
+                    <ModTime>1537190507577</ModTime>
+                </LinkCriteria>
+                <Hooks>
+                    <InheritFrom>[parent]</InheritFrom>
+                    <ModTime>1537190959167</ModTime>
+                </Hooks>
+                <CheckpointConfig/>
+                <SandboxConfig/>
+                <Reconnect>
+                    <InheritFrom>[parent]</InheritFrom>
+                    <ReconnectRules/>
+                </Reconnect>
+                <Operations/>
+                <PoolDefinition>
+                    <InheritFrom>[parent]</InheritFrom>
+                </PoolDefinition>
+                <PoolInstance/>
+            </Connector>
+            <Connector name="LDAPConnector">
+                <InheritFrom>system:/Connectors/ibmdi.LDAP</InheritFrom>
+                <ModTime>1537191396954</ModTime>
+                <ConnectorMode>AddOnly</ConnectorMode>
+                <ConnectorState>Enabled</ConnectorState>
+                <Configuration>
+                    <InheritFrom>[parent]</InheritFrom>
+                    <ModTime>1537190829474</ModTime>
+                    <parameter encrypted="true" name="ldapPassword">eqeL/ZwXppIu4nBpC1Y2qA/cdaq89Ukb6ErhOSTi9HT55gLCdfz6X7RajvlL/0PsTMQAjkb9UnIODsXS3YWmrHxSzsmlAsXTX/762POKn3g6/CAHRZPotX1fyXJoXUk4qwyPYoMkI6gPCWBGYlGrujWE35mAv7E0mqVpbSNr0DI=</parameter>
+                    <parameter name="ldapSearchBase">dc=example,dc=com</parameter>
+                    <parameter name="ldapUrl">ldap://localhost:10389</parameter>
+                    <parameter name="ldapUsername">uid=admin,ou=system</parameter>
+                </Configuration>
+                <Parser>
+                    <InheritFrom>[parent]</InheritFrom>
+                    <ModTime>1537190787065</ModTime>
+                </Parser>
+                <AttributeMap name="Input">
+                    <InheritFrom>[parent]</InheritFrom>
+                    <ModTime>1537190787065</ModTime>
+                </AttributeMap>
+                <AttributeMap name="Output">
+                    <InheritFrom>[parent]</InheritFrom>
+                    <ModTime>1537191396954</ModTime>
+                    <AttributeMapItem>
+                        <Name>*</Name>
+                        <Type>simple</Type>
+                        <Simple>*</Simple>
+                    </AttributeMapItem>
+                    <AttributeMapItem>
+                        <Name>fullPath</Name>
+                        <Type>simple</Type>
+                        <Simple>fullPath</Simple>
+                    </AttributeMapItem>
+                </AttributeMap>
+                <DeltaSettings/>
+                <Schema name="Input">
+                    <InheritFrom>[parent]</InheritFrom>
+                    <ModTime>1537190787065</ModTime>
+                </Schema>
+                <Schema name="Output">
+                    <InheritFrom>[parent]</InheritFrom>
+                    <ModTime>1537190787065</ModTime>
+                </Schema>
+                <LinkCriteria>
+                    <InheritFrom>[parent]</InheritFrom>
+                    <ModTime>1537190787065</ModTime>
+                </LinkCriteria>
+                <Hooks>
+                    <InheritFrom>[parent]</InheritFrom>
+                    <ModTime>1537190787065</ModTime>
+                </Hooks>
+                <CheckpointConfig/>
+                <SandboxConfig/>
+                <Reconnect>
+                    <InheritFrom>[parent]</InheritFrom>
+                    <ReconnectRules/>
+                </Reconnect>
+                <Operations/>
+                <PoolDefinition>
+                    <InheritFrom>[parent]</InheritFrom>
+                </PoolDefinition>
+                <PoolInstance/>
+            </Connector>
+        </ContainerDF>
+        <ThreadOptions/>
+        <Operations/>
+        <InitParams>
+            <Schema name="AssemblyLineInitParams"/>
+        </InitParams>
+    </AssemblyLine>
+</MetamergeConfig>

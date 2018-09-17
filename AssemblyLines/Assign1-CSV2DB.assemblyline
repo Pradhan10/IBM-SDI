@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?><MetamergeConfig Cycle="6" UUID="6eb5eb4c-d600-48da-842e-f0cc8a742717" created="Mon Sep 17 15:21:22 IST 2018" createdBy="GS-1843" main="Assign1-CSV2DB" modified="Mon Sep 17 18:52:14 IST 2018" modifiedBy="GS-1843" project="Assignment" version="7.1.1">
+    <AssemblyLine name="Assign1-CSV2DB">
+        <ModTime>1537188193926</ModTime>
+        <Settings/>
+        <Hooks/>
+        <CheckpointConfig/>
+        <SandboxConfig/>
+        <SimulationConfig>
+            <SimulationStates>
+                <Component name="DatabaseConnector" state="Simulated"/>
+                <Component name="FileConnector" state="Enabled"/>
+            </SimulationStates>
+            <ProxySettings/>
+        </SimulationConfig>
+        <LogConfig/>
+        <ContainerEF name="EntryFeedContainer">
+            <ModTime>1537177925214</ModTime>
+            <Connector name="FileConnector">
+                <InheritFrom>system:/Connectors/ibmdi.FileSystem</InheritFrom>
+                <ModTime>1537177925214</ModTime>
+                <ConnectorMode>Iterator</ConnectorMode>
+                <ConnectorState>Enabled</ConnectorState>
+                <Configuration>
+                    <InheritFrom>[parent]</InheritFrom>
+                    <ModTime>1537177907057</ModTime>
+                    <parameter name="filePath">C:\Users\gs-1843\Downloads\OneHourParentTeacherConferenceSampleImportFile.csv</parameter>
+                </Configuration>
+                <Parser>
+                    <InheritFrom>system:/Parsers/ibmdi.CSV</InheritFrom>
+                    <ModTime>1537177914027</ModTime>
+                    <parameter name="csvSortFields">true</parameter>
+                </Parser>
+                <AttributeMap name="Input">
+                    <InheritFrom>[parent]</InheritFrom>
+                    <ModTime>1537177922184</ModTime>
+                    <AttributeMapItem>
+                        <Name>*</Name>
+                        <Type>simple</Type>
+                        <Simple>*</Simple>
+                    </AttributeMapItem>
+                </AttributeMap>
+                <AttributeMap name="Output">
+                    <InheritFrom>[parent]</InheritFrom>
+                    <ModTime>1537177892884</ModTime>
+                </AttributeMap>
+                <DeltaSettings>
+                    <ModTime>1537177915213</ModTime>
+                    <WhenToCommit>After every database operation</WhenToCommit>
+                    <RowLocking>SERIALIZABLE</RowLocking>
+                    <ChangeDetectionMode>DETECT_ALL</ChangeDetectionMode>
+                </DeltaSettings>
+                <Schema name="Input">
+                    <InheritFrom>[parent]</InheritFrom>
+                    <ModTime>1537177925214</ModTime>
+                    <SchemaItem>
+                        <Name>Start Date ,Start Time,End Date,End Time,Event Title ,Event Description,All Day Event,No End Time,Contact ,Contact Email,Contact Phone,Location,Category,Registration,Maximum Seats,Last Date To Register</Name>
+                        <Syntax>java.lang.String</Syntax>
+                    </SchemaItem>
+                </Schema>
+                <Schema name="Output">
+                    <InheritFrom>[parent]</InheritFrom>
+                    <ModTime>1537177925214</ModTime>
+                    <SchemaItem>
+                        <Name>Start Date ,Start Time,End Date,End Time,Event Title ,Event Description,All Day Event,No End Time,Contact ,Contact Email,Contact Phone,Location,Category,Registration,Maximum Seats,Last Date To Register</Name>
+                        <Syntax>java.lang.String</Syntax>
+                    </SchemaItem>
+                </Schema>
+                <LinkCriteria>
+                    <InheritFrom>[parent]</InheritFrom>
+                    <ModTime>1537177892884</ModTime>
+                </LinkCriteria>
+                <Hooks>
+                    <InheritFrom>[parent]</InheritFrom>
+                    <ModTime>1537177892884</ModTime>
+                </Hooks>
+                <CheckpointConfig/>
+                <SandboxConfig/>
+                <Reconnect>
+                    <InheritFrom>[parent]</InheritFrom>
+                    <ReconnectRules/>
+                </Reconnect>
+                <Operations/>
+                <PoolDefinition>
+                    <InheritFrom>[parent]</InheritFrom>
+                </PoolDefinition>
+                <PoolInstance/>
+            </Connector>
+        </ContainerEF>
+        <ContainerDF name="DataFlowContainer">
+            <ModTime>1537188193926</ModTime>
+            <Connector name="DatabaseConnector">
+                <InheritFrom>system:/Connectors/ibmdi.Database</InheritFrom>
+                <ModTime>1537188193926</ModTime>
+                <ConnectorMode>AddOnly</ConnectorMode>
+                <ConnectorState>Enabled</ConnectorState>
+                <Configuration>
+                    <InheritFrom>[parent]</InheritFrom>
+                    <ModTime>1537188193926</ModTime>
+                    <parameter name="jdbcDriver">com.mysql.jdbc.Driver</parameter>
+                    <parameter name="jdbcLogin">root</parameter>
+                    <parameter name="jdbcPassword">Americais!gr8</parameter>
+                    <parameter name="jdbcSource">jdbc:mysql://localhost:3306/sakila</parameter>
+                    <parameter name="jdbcTable">actor</parameter>
+                </Configuration>
+                <Parser>
+                    <InheritFrom>[parent]</InheritFrom>
+                    <ModTime>1537178586829</ModTime>
+                </Parser>
+                <AttributeMap name="Input">
+                    <InheritFrom>[parent]</InheritFrom>
+                    <ModTime>1537178586829</ModTime>
+                </AttributeMap>
+                <AttributeMap name="Output">
+                    <InheritFrom>[parent]</InheritFrom>
+                    <ModTime>1537183213758</ModTime>
+                    <AttributeMapItem>
+                        <Name>*</Name>
+                        <Type>simple</Type>
+                        <Simple>*</Simple>
+                    </AttributeMapItem>
+                </AttributeMap>
+                <DeltaSettings/>
+                <Schema name="Input">
+                    <InheritFrom>[parent]</InheritFrom>
+                    <ModTime>1537178586829</ModTime>
+                </Schema>
+                <Schema name="Output">
+                    <InheritFrom>[parent]</InheritFrom>
+                    <ModTime>1537178586829</ModTime>
+                </Schema>
+                <LinkCriteria>
+                    <InheritFrom>[parent]</InheritFrom>
+                    <ModTime>1537178586829</ModTime>
+                </LinkCriteria>
+                <Hooks>
+                    <InheritFrom>[parent]</InheritFrom>
+                    <ModTime>1537178586829</ModTime>
+                </Hooks>
+                <CheckpointConfig/>
+                <SandboxConfig/>
+                <Reconnect>
+                    <InheritFrom>[parent]</InheritFrom>
+                    <ReconnectRules/>
+                </Reconnect>
+                <Operations/>
+                <PoolDefinition>
+                    <InheritFrom>[parent]</InheritFrom>
+                </PoolDefinition>
+                <PoolInstance/>
+            </Connector>
+        </ContainerDF>
+        <ThreadOptions/>
+        <Operations/>
+        <InitParams>
+            <Schema name="AssemblyLineInitParams"/>
+        </InitParams>
+    </AssemblyLine>
+</MetamergeConfig>
